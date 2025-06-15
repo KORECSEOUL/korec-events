@@ -7,7 +7,7 @@ export default defineConfig({
     starlight({
       title: 'KOREC Event',
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/your-org' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/GNUHONG' },
       ],
     }),
   ],
