@@ -75,9 +75,9 @@
     zod "^3.24.2"
 
 "@astrojs/starlight@^0.34.3":
-  version "0.34.3"
-  resolved "https://registry.yarnpkg.com/@astrojs/starlight/-/starlight-0.34.3.tgz#7bc0d8461296e741820fa1ef10a50a914db696bd"
-  integrity sha512-MAuD3NF+E+QXJJuVKofoR6xcPTP4BJmYWeOBd03udVdubNGVnPnSWVZAi+ZtnTofES4+mJdp8BNGf+ubUxkiiA==
+  version "0.34.4"
+  resolved "https://registry.yarnpkg.com/@astrojs/starlight/-/starlight-0.34.4.tgz#df1092d65b2e02a98c171ffa645f2f6e3572ffbd"
+  integrity sha512-NfQ6S2OaDG8aaiE+evVxSMpgqMkXPLa/yCpzG340EX2pRzFxPeTSvpei3Uz9KouevXRCctjHSItKjuZP+2syrQ==
   dependencies:
     "@astrojs/markdown-remark" "^6.3.1"
     "@astrojs/mdx" "^4.2.3"
@@ -860,9 +860,9 @@ astro-expressive-code@^0.41.1:
     rehype-expressive-code "^0.41.2"
 
 astro@^5.6.1:
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-5.9.2.tgz#04978c535bb412430acbfd232079d95b030e530b"
-  integrity sha512-K/zZlQOWMpamfLDOls5jvG7lrsjH1gkk3ESRZyZDCkVBtKHMF4LbjwCicm/iBb3mX3V/PerqRYzLbOy3/4JLCQ==
+  version "5.9.3"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.9.3.tgz#9caed9a387517cac62c922e192c325d3bed28154"
+  integrity sha512-VReZrpUa/3rfeiVvsQ1A2M3ujDPI+pDGIYOMtXPEZwut8tZoEyealXXLjitgCsJ+3dunKGZbg4Eak6i+r0vniw==
   dependencies:
     "@astrojs/compiler" "^2.12.2"
     "@astrojs/internal-helpers" "0.6.1"
@@ -1208,9 +1208,9 @@ debug@^4.0.0, debug@^4.4.0:
     ms "^2.1.3"
 
 decode-named-character-reference@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/decode-named-character-reference/-/decode-named-character-reference-1.1.0.tgz#5d6ce68792808901210dac42a8e9853511e2b8bf"
-  integrity sha512-Wy+JTSbFThEOXQIR2L6mxJvEs+veIzpmqD7ynWxMXGpnk3smkHQOp6forLdHsKpAMW9iJpaBBIxz285t1n1C3w==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/decode-named-character-reference/-/decode-named-character-reference-1.2.0.tgz#25c32ae6dd5e21889549d40f676030e9514cc0ed"
+  integrity sha512-c6fcElNV6ShtZXmsgNgFFV5tVX2PaV4g+MOAkb8eXHvn6sryJBrZa9r0zV6+dtTyoCKxtDy5tyQ5ZwQuidtd+Q==
   dependencies:
     character-entities "^2.0.0"
 
