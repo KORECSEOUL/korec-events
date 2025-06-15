@@ -1,0 +1,56 @@
+---
+title: KOREC Event
+description: 이번 달 KOREC 주요 이벤트 소개
+template: splash
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import Nav from '../../components/Nav.astro';
+
+<div style="margin-bottom: 2rem;">
+  KOREC의 이벤트를 통해 커리어 성장과 네트워킹 기회를 만나보세요! 아래 링크에서 각 이벤트를 클릭해 세부 내용을 확인할 수 있습니다.
+</div>
+
+<Nav />
+
+<CardGrid stagger>
+  <Card
+    title="KOREC CAREER EXPO 2025"
+    icon="signal"
+    href="/events/career-expo"
+  >
+    2025년 7월 11일 • 명동 온즈드롬
+  </Card>
+
+  <Card
+    title="자기분석 Workshop"
+    icon="pencil"
+    href="/events/self-analysis"
+  >
+    자기분석 툴을 통해 함께 자기분석을 해봅시다!
+  </Card>
+
+  <Card
+    title="ES 작성 Workshop"
+    icon="pen"
+    href="/events/es-workshop"
+  >
+    기초적인 ES 작성을 함께 연습해봐요!
+  </Card>
+
+  <Card
+    title="일본취업 Class"
+    icon="open-book"
+    href="/events/japan-class"
+  >
+    일본 취업 A to Z 클래스
+  </Card>
+
+  <Card
+    title="MeetUP Event"
+    icon="star"
+    href="/events/meetup"
+  >
+    강추!! 네트워킹 & 스카우트 기회
+  </Card>
+</CardGrid>

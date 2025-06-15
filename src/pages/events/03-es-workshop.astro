@@ -1,0 +1,37 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Card, LinkButton } from "@astrojs/starlight/components";
+---
+
+<StarlightPage frontmatter={{ title: '초보자를 위한 ES작성 WS', description: '...' }}>
+  <h2>📌 일정</h2>
+ <h4>7월 업데이트 예정!</h4>
+
+  <br/><h2>📝 소개</h2>
+  <p>일본취업을 목표로 자기분석을 했는데,,, <br />다음에 뭘 해야하지? ES? <br />
+그런 분들에게 딱 맞는 ES작성 워크숍! 
+<br /><br />✓ES에 어떤 걸 쓰면 될까? 
+<br /><br />✓ES의 작성 방식과 구성은? 
+<br /><br />✓기업은 ES의 어떤 부분을 보는 걸까? 
+이러한 의문점과 불안함을 ES작성 워크숍에서 해소해봅시다✨ </p>
+
+  <LinkButton href="https://reserva.be/korec2019/reserve?mode=service_staff&search_evt_no=a9eJwzNjAysjQEAAQpATI&ctg_no=15eJwzMjEwAAAB-ADH" icon="external" target="_blank">
+    신청하기
+  </LinkButton>
+
+  <style>
+    .link-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: .75rem 1.25rem;
+      background-color: var(--color-accent-600);
+      color: white;
+      border-radius: .5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .link-button:hover {
+      opacity: .9;
+    }
+  </style>
+</StarlightPage>

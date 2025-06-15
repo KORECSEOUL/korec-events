@@ -1,0 +1,38 @@
+---
+const events = [
+  { label: 'Career Expo 2025', link: '/events/01-career-expo' },
+  { label: '자기분석 WS', link: '/events/02-self-analysis' },
+  { label: 'ES작성 WS', link: '/events/03-es-workshop' },
+  { label: '일본 취업 Class', link: '/events/04-japan-class' },
+  { label: 'MeetUp', link: '/events/05-meetup' },
+];
+---
+
+<nav class="top-nav">
+  {events.map(event => (
+    <a href={event.link} aria-label={`Go to ${event.label} page`}>{event.label}</a>
+  ))}
+</nav>
+
+<style>
+  .top-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--sl-color-gray-9);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* 다른 요소 위로 표시 */
+  }
+  .top-nav a {
+    color: var(--sl-color-gray-3);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+  .top-nav a:hover {
+    color: var(--sl-color-white);
+    background-color: var(--sl-color-gray-7);
+  }
+</style>
