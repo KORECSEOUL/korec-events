@@ -8,11 +8,6 @@ const events = [
 ];
 ---
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFMDMLF5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 <nav class="top-nav">
   {events.map(event => (
     <a href={event.link} aria-label={`Go to ${event.label} page`}>{event.label}</a>
