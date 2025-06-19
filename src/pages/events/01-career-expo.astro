@@ -1,6 +1,13 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { Card, LinkButton } from "@astrojs/starlight/components";
+
+// 쿼리 파라미터 로직 추가
+const url = new URL(Astro.request.url);
+const utmSource = url.searchParams.get('utm_source') || '(not set)';
+const utmMedium = url.searchParams.get('utm_medium') || '(not set)';
+const utmCampaign = url.searchParams.get('utm_campaign') || '(not set)';
+const queryString = utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}` : '';
 ---
 
 <StarlightPage frontmatter={{ title: 'KOREC CAREER EXPO 2025', description: '...' }}>
@@ -12,8 +19,7 @@ import { Card, LinkButton } from "@astrojs/starlight/components";
   <br/><h2>📝 소개</h2>
   <p>SEGA, 사이버 에이전트 등 우량기업 10개사가 참가하는 최대 규모 채용 이벤트!</p>
 
-  <LinkButton href="https://cafe.naver.com/koreccafe/9475" variant="primary" icon="external"target="_blank">
+  <LinkButton href={`https://cafe.naver.com/koreccafe/9475${queryString}`} variant="primary" icon="external" target="_blank">
     자세한 정보 보기
   </LinkButton>
-
 </StarlightPage>

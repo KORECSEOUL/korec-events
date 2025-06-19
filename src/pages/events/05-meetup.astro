@@ -1,6 +1,13 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { Card, LinkButton } from "@astrojs/starlight/components";
+
+// 쿼리 파라미터 로직 추가
+const url = new URL(Astro.request.url);
+const utmSource = url.searchParams.get('utm_source') || '(not set)';
+const utmMedium = url.searchParams.get('utm_medium') || '(not set)';
+const utmCampaign = url.searchParams.get('utm_campaign') || '(not set)';
+const queryString = utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}` : '';
 ---
 
 <StarlightPage frontmatter={{ title: 'KOREC MeetUp', description: '...' }}>

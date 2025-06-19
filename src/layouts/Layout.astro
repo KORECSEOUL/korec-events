@@ -10,5 +10,18 @@
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HRKZRKJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
+    <script>
+      document.addEventListener('astro:page-load', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const utmData = {
+          'utm_source': urlParams.get('utm_source') || '(not set)',
+          'utm_medium': urlParams.get('utm_medium') || '(not set)',
+          'utm_campaign': urlParams.get('utm_campaign') || '(not set)'
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(utmData);
+        console.log('dataLayer UTM on page load:', utmData);
+      });
+    </script>
   </body>
 </html>
