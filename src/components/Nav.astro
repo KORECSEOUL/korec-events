@@ -9,36 +9,35 @@ const events = [
 ---
 <!-- Google Tag Manager (noscript) -->
 <noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HRKZRKJ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HRKZRKJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <nav class="top-nav">
   {events.map(event => (
-    <a href={event.link} aria-label={`Go to ${event.label} page`}>{event.label}</a>
+    <a href={event.link} aria-label={`Go to ${event.label} page`} class="nav-link">{event.label}</a>
   ))}
 </nav>
 
-<style>
-  .top-nav {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: var(--sl-color-gray-9);
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* 다른 요소 위로 표시 */
-  }
-  .top-nav a {
-    color: var(--sl-color-gray-3);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-  }
-  .top-nav a:hover {
-    color: var(--sl-color-white);
-    background-color: var(--sl-color-gray-7);
-  }
-</style>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign'];
+    const queryParams = utmParams.map(param => {
+      const value = localStorage.getItem(param);
+      return value ? `${param}=${encodeURIComponent(value)}` : '';
+    }).filter(Boolean).join('&');
+
+    if (queryParams) {
+      document.querySelectorAll('.nav-link').forEach(link => {
+        const url = new URL(link.href, window.location.origin);
+        utmParams.forEach(param => {
+          const value = localStorage.getItem(param);
+          if (value) {
+            url.searchParams.set(param, value);
+          }
+        });
+        link.href = url.toString();
+      });
+    }
+  });
+</script>
