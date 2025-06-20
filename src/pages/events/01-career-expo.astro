@@ -14,20 +14,10 @@ import { LinkButton } from "@astrojs/starlight/components";
 
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
-      const externalLinks = document.querySelectorAll('a[icon="external"]');
-      externalLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          const urlParams = new URLSearchParams(window.location.search);
-          const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
-          if (!link.href.includes('?')) {
-            e.preventDefault(); // 기본 동작 중단
-            const newUrl = link.href + queryString;
-            window.open(newUrl, '_blank'); // 새 탭에서 열기
-            // GTM에 이벤트 수동 전송 (선택 사항)
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ 'event': 'outbound_link_click', 'click_url': newUrl });
-          }
-        });
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
+      document.querySelectorAll('a[icon="external"]').forEach(link => {
+        if (!link.href.includes('?')) link.href += queryString;
       });
     });
   </script>

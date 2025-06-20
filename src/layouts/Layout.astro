@@ -1,43 +1,38 @@
 ---
-const events = [
-  { label: 'Career Expo 2025', link: '/events/01-career-expo' },
-  { label: '자기분석 WS', link: '/events/02-self-analysis' },
-  { label: 'ES작성 WS', link: '/events/03-es-workshop' },
-  { label: '일본 취업 Class', link: '/events/04-japan-class' },
-  { label: 'MeetUp', link: '/events/05-meetup' },
-];
 ---
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HRKZRKJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
+<html>
+  <head>
+    <!-- head 내용 -->
+  </head>
+  <body>
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5HRKZRKJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
 
-<nav class="top-nav">
-  {events.map(event => (
-    <a href={event.link + Astro.url.search} aria-label={`Go to ${event.label} page`} class="nav-link">{event.label}</a>
-  ))}
-</nav>
+    <slot />
 
-<style>
-  .top-nav {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: var(--sl-color-gray-9);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  .top-nav a {
-    color: var(--sl-color-gray-3);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-  }
-  .top-nav a:hover {
-    color: var(--sl-color-white);
-    background-color: var(--sl-color-gray-7);
-  }
-</style>
+    <script is:inline>
+      document.addEventListener('astro:page-load', () => {
+        if (typeof window !== 'undefined') {
+          const urlParams = new URLSearchParams(window.location.search);
+          const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
+          const links = document.querySelectorAll('a:not([icon="external"]):not([href^="http"])');
+          links.forEach(link => {
+            if (!link.href.includes('?')) link.href += queryString;
+          });
+
+          const utmData = {
+            utm_source: urlParams.get('utm_source') || '(not set)',
+            utm_medium: urlParams.get('utm_medium') || '(not set)',
+            utm_campaign: urlParams.get('utm_campaign') || '(not set)'
+          };
+          window.dataLayer = window.dataLayer || [];
+          if (!window.dataLayer.some(item => item.utm_source === utmData.utm_source)) {
+            window.dataLayer.push(utmData);
+            console.log('dataLayer UTM:', utmData);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
