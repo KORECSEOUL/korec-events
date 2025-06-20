@@ -13,16 +13,11 @@ import { Card, LinkButton } from "@astrojs/starlight/components";
   <p>SEGA, 사이버 에이전트 등 우량기업 10개사가 참가하는 최대 규모 채용 이벤트!</p>
 
   <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      function getQueryString() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const utmSource = urlParams.get('utm_source') || '(not set)';
-        const utmMedium = urlParams.get('utm_medium') || '(not set)';
-        const utmCampaign = urlParams.get('utm_campaign') || '(not set)';
-        return utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}` : '';
-      }
+   document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
       document.querySelectorAll('a[icon="external"]').forEach(link => {
-        if (!link.href.includes('?')) link.href += getQueryString();
+        if (!link.href.includes('?')) link.href += queryString; 
       });
     });
   </script>

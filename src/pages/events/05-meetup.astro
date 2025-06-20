@@ -18,7 +18,15 @@ const queryString = utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_me
 <br /><br />✓일본 취업을 준비하는 사람들과 네트워킹하고 싶다! 
 <br /><br />※별도 기재되어있지 않는 경우, 서류 전형이 면제되고 당일 면접 참여 가능!
 </p>
-
+  <script is:inline>
+   document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
+      document.querySelectorAll('a[icon="external"]').forEach(link => {
+        if (!link.href.includes('?')) link.href += queryString; 
+      });
+    });
+  </script>
   <LinkButton href="https://cafe.naver.com/koreccafe/6981" icon="external" target="_blank">
     KMU 모음
   </LinkButton>

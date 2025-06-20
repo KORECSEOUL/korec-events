@@ -21,7 +21,15 @@ const queryString = utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_me
 <br /><br />- ES나 면접에서 어떤 이야기를 해야할 지 모르는 사람
 <br /><br />- 자기 분석의 중요성은 이해하지만 분석방법을 모르는 사람
 이러한 의문점과 불안함을 자기분석 워크숍에서 해소해봅시다✨ </p>
-
+  <script is:inline>
+   document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
+      document.querySelectorAll('a[icon="external"]').forEach(link => {
+        if (!link.href.includes('?')) link.href += queryString; 
+      });
+    });
+  </script>
   <LinkButton href="https://reserva.be/korec2019/reserve?mode=service_staff&search_evt_no=10eJwzNjA3NLUEAAQ6ATo&ctg_no=15eJwzMjEwAAAB-ADH" target="_blank" icon="external">
     신청하기
   </LinkButton>

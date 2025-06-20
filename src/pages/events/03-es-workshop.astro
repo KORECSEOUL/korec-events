@@ -21,7 +21,15 @@ const queryString = utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_me
 <br /><br />✓ES의 작성 방식과 구성은? 
 <br /><br />✓기업은 ES의 어떤 부분을 보는 걸까? 
 이러한 의문점과 불안함을 ES작성 워크숍에서 해소해봅시다✨ </p>
-
+  <script is:inline>
+   document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
+      document.querySelectorAll('a[icon="external"]').forEach(link => {
+        if (!link.href.includes('?')) link.href += queryString; 
+      });
+    });
+  </script>
   <LinkButton href="https://reserva.be/korec2019/reserve?mode=service_staff&search_evt_no=a9eJwzNjAysjQEAAQpATI&ctg_no=15eJwzMjEwAAAB-ADH" icon="external" target="_blank">
     신청하기
   </LinkButton>

@@ -22,7 +22,15 @@ const queryString = utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_me
 <br /><br />- 동영상 콘텐츠(전 12편) + 4회 온라인 면담 구성
 <br /><br />- 1회 30분~ 1시간, 수강생이 원하는 스케줄대로 자유롭게 동영상 콘텐츠 수강 
 <br /><br />- 면담 + 종업식 시 <b>KOREC 커리어 어드바이저</b>의 일본 취직 개별 어드바이스 제공 & 서포트!</p>
-
+  <script is:inline>
+   document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
+      document.querySelectorAll('a[icon="external"]').forEach(link => {
+        if (!link.href.includes('?')) link.href += queryString; 
+      });
+    });
+  </script>
   <LinkButton href="https://cafe.naver.com/koreccafe/9113" icon="external" target="_blank">
     신청하기
   </LinkButton>
