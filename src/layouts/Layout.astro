@@ -14,28 +14,34 @@
 
     <script is:inline>
       document.addEventListener('astro:page-load', () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const utmParams = ['utm_source', 'utm_medium', 'utm_campaign'];
-        let hasUtm = false;
+        if (typeof window !== 'undefined') {
+          const urlParams = new URLSearchParams(window.location.search);
+          const utmParams = ['utm_source', 'utm_medium', 'utm_campaign'];
+          let hasUtm = false;
 
-        utmParams.forEach(param => {
-          const value = urlParams.get(param);
-          if (value) {
-            localStorage.setItem(param, value);
-            hasUtm = true;
+          utmParams.forEach(param => {
+            const value = urlParams.get(param);
+            if (value) {
+              localStorage.setItem(param, value);
+              hasUtm = true;
+            } else if (!localStorage.getItem(param)) {
+              localStorage.setItem(param, '(not set)');
+            }
+          });
+
+          // dataLayer에 로컬 스토리지의 UTM 전송
+          const utmData = {
+            utm_source: localStorage.getItem('utm_source') || '(not set)',
+            utm_medium: localStorage.getItem('utm_medium') || '(not set)',
+            utm_campaign: localStorage.getItem('utm_campaign') || '(not set)'
+          };
+
+          window.dataLayer = window.dataLayer || [];
+          if (!window.dataLayer.some(item => item.utm_source === utmData.utm_source)) {
+            window.dataLayer.push(utmData);
+            console.log('dataLayer UTM:', utmData);
           }
-        });
-
-        // dataLayer에 로컬 스토리지의 UTM 전송
-        const utmData = {
-          utm_source: localStorage.getItem('utm_source') || '(not set)',
-          utm_medium: localStorage.getItem('utm_medium') || '(not set)',
-          utm_campaign: localStorage.getItem('utm_campaign') || '(not set)'
-        };
-
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push(utmData);
-        console.log('dataLayer UTM:', utmData);
+        }
       });
     </script>
   </body>

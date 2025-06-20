@@ -9,7 +9,6 @@ export default defineConfig({
         { icon: 'github', label: 'GitHub', href: 'https://github.com/GNUHONG' },
       ],
       head: [
-        // ✅ GTM 스크립트만 유지, GA4 직접 삽입 제거 (중복 추적 방지)
         {
           tag: 'script',
           content: `
@@ -20,8 +19,14 @@ export default defineConfig({
               j.async = true;
               j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
               f.parentNode.insertBefore(j, f);
-              // GTM 로드 후 UTM 파라미터를 dataLayer에 푸시
-              j.onload = function() {
+            })(window, document, 'script', 'dataLayer', 'GTM-5HRKZRKJ');
+          `,
+        },
+        {
+          tag: 'script',
+          content: `
+            document.addEventListener('astro:page-load', () => {
+              if (typeof window !== 'undefined') {
                 const urlParams = new URLSearchParams(window.location.search);
                 const utmData = {
                   'utm_source': urlParams.get('utm_source') || '(not set)',
@@ -29,11 +34,12 @@ export default defineConfig({
                   'utm_campaign': urlParams.get('utm_campaign') || '(not set)'
                 };
                 window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push(utmData);
-                // 디버깅 로그 추가
-                console.log('dataLayer UTM:', utmData);
-              };
-            })(window, document, 'script', 'dataLayer', 'GTM-5HRKZRKJ');
+                if (!window.dataLayer.some(item => item.utm_source === utmData.utm_source)) {
+                  window.dataLayer.push(utmData);
+                  console.log('dataLayer UTM on page load:', utmData);
+                }
+              }
+            });
           `,
         },
       ],
