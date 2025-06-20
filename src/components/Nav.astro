@@ -21,23 +21,36 @@ const events = [
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign'];
-    const queryParams = utmParams.map(param => {
-      const value = localStorage.getItem(param);
-      return value ? `${param}=${encodeURIComponent(value)}` : '';
-    }).filter(Boolean).join('&');
-
-    if (queryParams) {
-      document.querySelectorAll('.nav-link').forEach(link => {
-        const url = new URL(link.href, window.location.origin);
-        utmParams.forEach(param => {
-          const value = localStorage.getItem(param);
-          if (value) {
-            url.searchParams.set(param, value);
-          }
-        });
-        link.href = url.toString();
-      });
-    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get('utm_source') || '(not set)';
+    const utmMedium = urlParams.get('utm_medium') || '(not set)';
+    const utmCampaign = urlParams.get('utm_campaign') || '(not set)';
+    const queryString = utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}` : '';
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (!link.href.includes('?')) link.href += queryString;
+    });
   });
 </script>
+
+<style>
+  .top-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--sl-color-gray-9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .top-nav a {
+    color: var(--sl-color-gray-3);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+  .top-nav a:hover {
+    color: var(--sl-color-white);
+    background-color: var(--sl-color-gray-7);
+  }
+</style>
