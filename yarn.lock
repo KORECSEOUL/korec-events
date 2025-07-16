@@ -91,9 +91,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/starlight@npm:^0.34.3":
-  version: 0.34.4
-  resolution: "@astrojs/starlight@npm:0.34.4"
+"@astrojs/starlight@npm:0.34.7":
+  version: 0.34.7
+  resolution: "@astrojs/starlight@npm:0.34.7"
   dependencies:
     "@astrojs/markdown-remark": "npm:^6.3.1"
     "@astrojs/mdx": "npm:^4.2.3"
@@ -124,7 +124,7 @@ __metadata:
     vfile: "npm:^6.0.2"
   peerDependencies:
     astro: ^5.5.0
-  checksum: 10c0/27d93ca1f28a0584042d33e3d165785717b6a726716dd7db046c117a3ec68826840047d3fea629b8797f87dc9ba03c80fa2118cec029985eff3fdc38773bf21d
+  checksum: 10c0/96f92144796290c60c3183ec1e6d95456bb7482f99e4b18a8703c7f1d31ae84b8ceac545adf9db096670d1cf6fb7e6036b4c51bfe839e8c661263611ae4b1708
   languageName: node
   linkType: hard
 
@@ -1244,9 +1244,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^5.6.1":
-  version: 5.9.3
-  resolution: "astro@npm:5.9.3"
+"astro@npm:5.11.1":
+  version: 5.11.1
+  resolution: "astro@npm:5.11.1"
   dependencies:
     "@astrojs/compiler": "npm:^2.12.2"
     "@astrojs/internal-helpers": "npm:0.6.1"
@@ -1315,7 +1315,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 10c0/378797bef1a4b57e38cb15b230ebe230e3f60a1c94ef9c1dc67fde1ae2df1ae34c36189ee28039e175c4d5a20167e3dddba8186d4cc4b3328277941d40fe9d9a
+  checksum: 10c0/988904ad77a848c9814e7abeeaea38013d096cf9d9f1c08878054e562ca37e6654df7182b8b58b7ec2a48141e64842f3d1dc3322ccc30a2b6d2624bde15da1b4
   languageName: node
   linkType: hard
 
@@ -3816,8 +3816,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "my-website@workspace:."
   dependencies:
-    "@astrojs/starlight": "npm:^0.34.3"
-    astro: "npm:^5.6.1"
+    "@astrojs/starlight": "npm:0.34.7"
+    astro: "npm:5.11.1"
     sharp: "npm:^0.32.5"
   languageName: unknown
   linkType: soft
