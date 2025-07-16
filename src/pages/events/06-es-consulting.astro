@@ -1,0 +1,38 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Card, LinkButton } from "@astrojs/starlight/components";
+
+// 쿼리 파라미터 로직 추가
+const url = new URL(Astro.request.url);
+const utmSource = url.searchParams.get('utm_source') || '(not set)';
+const utmMedium = url.searchParams.get('utm_medium') || '(not set)';
+const utmCampaign = url.searchParams.get('utm_campaign') || '(not set)';
+const queryString = utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}` : '';
+---
+
+<StarlightPage frontmatter={{ title: '1:1 ES 첨삭 컨설팅', description: '...' }}>
+   <h2>📌 일정</h2>
+  <p>매 달 선착순 신청!</p>
+   <h5>・참가비 및 언어</h5>
+   <p>참가비: <b>15,000원</b></p>
+    <p>언어: <b>한국어</b>or<b>일본어</b></p>
+
+ <br/><h2>📝 소개</h2>
+  <p>"ES 작성 해봤는데 이게 맞나..."라고 생각하고 계시는 분 <br />"WS보다 더욱 자세하게 내가 작성한 ES를 첨삭해주면 좋겠다..."라고 생각하고 계시는 분 <br />
+그런 분들에게 딱 맞는 ES 첨삭 컨설팅! 
+<br /><br />✓여러분들의 ES를 <b>온라인</b>으로 45분 안에 최대한 많이 첨삭하는 서비스입니다! 
+<br><br>✓1:1로 진행되기 때문에 궁금한 것을 직접 물어볼 수 있어요!
+<br>자신의 문제점을 알고, 즉각적인 FB를 받아 보세요! 
+<br /><br />✓에피소드, 어필포인트와 같은 내용적인 측면은 물론, 일본어 문법, 표현까지도 함께 확인하겠습니다! </p>
+  <script is:inline>
+   document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
+      document.querySelectorAll('a[icon="external"]').forEach(link => {
+        if (!link.href.includes('?')) link.href += queryString; 
+      });
+    });
+  </script>
+  <LinkButton href="https://reserva.be/korec2019/reserve?mode=service_staff&search_evt_no=26eJwzMjE1srAEAARJAT8&ctg_no=15eJwzMjEwAAAB-ADH" icon="external" target="_blank">
+    신청하기
+  </LinkButton>

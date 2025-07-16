@@ -10,6 +10,21 @@ export default defineConfig({
       ],
       head: [
         {
+          tag: 'link',
+          attrs: {
+            rel: 'stylesheet',
+            href: 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css',
+          },
+        },
+        {
+          tag: 'style',
+          content: `
+            html, body, * {
+              font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif !important;
+            }
+          `,
+        },
+        {
           tag: 'script',
           content: `
             (function(w, d, s, l, i) {

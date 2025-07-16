@@ -1,0 +1,38 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Card, LinkButton } from "@astrojs/starlight/components";
+
+// 쿼리 파라미터 로직 추가
+const url = new URL(Astro.request.url);
+const utmSource = url.searchParams.get('utm_source') || '(not set)';
+const utmMedium = url.searchParams.get('utm_medium') || '(not set)';
+const utmCampaign = url.searchParams.get('utm_campaign') || '(not set)';
+const queryString = utmSource !== '(not set)' ? `?utm_source=${utmSource}&utm_medium=${utmMedium}&utm_campaign=${utmCampaign}` : '';
+---
+
+<StarlightPage frontmatter={{ title: '1:1 면접 컨설팅', description: '...' }}>
+   <h2>📌 일정</h2>
+  <p>매 달 선착순 신청!</p>
+   <h5>・참가비 및 언어</h5>
+   <p>참가비: <b>15,000원</b></p>
+    <p>언어: <b>한국어</b>or<b>일본어</b></p>
+
+ <br/><h2>📝 소개</h2>
+  <p>일본 기업의 면접을 준비하고 계시는 여러분들의 막막함을 해소해봅시다✨ 
+<br /><br />✓곧 일본기업의 면접을 앞두고 있는 분! 
+<br><br>✓내가 말하고자 하는 것이 잘 전달되는지 확인받고 싶은 분!
+<br><br>✓면접에서 자주 나오는 질문이 궁금하신 분!
+<br /><br />✓에피소드나 내용을 점검받고 싶은 분 등,
+<br>면접에 도움이 필요하신 분들이라면 누구나 환영합니다:) </p>
+  <script is:inline>
+   document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryString = urlParams.toString() ? `?${urlParams.toString()}` : '';
+      document.querySelectorAll('a[icon="external"]').forEach(link => {
+        if (!link.href.includes('?')) link.href += queryString; 
+      });
+    });
+  </script>
+  <LinkButton href="https://reserva.be/korec2019/reserve?mode=service_staff&search_evt_no=10eJwzMjA2MDMHAAQhATM&ctg_no=15eJwzMjEwAAAB-ADH" icon="external" target="_blank">
+    신청하기
+  </LinkButton>
