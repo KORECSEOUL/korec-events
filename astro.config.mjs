@@ -1,12 +1,13 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap'; // sitemap 통합 추가
 
 export default defineConfig({
   integrations: [
     starlight({
       title: 'KOREC Event',
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/GNUHONG' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/KORECSEOUL' },
       ],
       head: [
         {
@@ -59,5 +60,8 @@ export default defineConfig({
         },
       ],
     }),
+    sitemap(), // sitemap 통합 추가
   ],
+  site: 'https://korec-events.pages.dev', // 실제 배포 URL로 변경
+  output: 'static', // 이미 설정되어 있을 가능성이 높음
 });
